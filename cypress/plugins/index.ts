@@ -15,7 +15,8 @@
 /**
  * @type {Cypress.PluginConfig}
  */
-module.exports = () => {
-  // `on` is used to hook into various events Cypress emits
-  // `config` is the resolved Cypress config
+module.exports = (on, config) => {
+  require('@cypress/code-coverage/task')(on, config);
+
+  return config;
 };
