@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./book-list.component.scss']
 })
 export class BookListComponent implements OnInit {
+  private bookList: string[] = [];
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() {
+    this.bookList.push('Henri Pottier');
   }
 
+  ngOnInit(): void {
+    this.bookList.push('Henri Pottier 2');
+  }
 }
