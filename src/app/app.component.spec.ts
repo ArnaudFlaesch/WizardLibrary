@@ -26,7 +26,7 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content p').textContent).toContain(
+    expect(compiled.querySelector('p').textContent).toContain(
       'book-list works!'
     );
   });
