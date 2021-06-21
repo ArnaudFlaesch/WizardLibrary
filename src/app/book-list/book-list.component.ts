@@ -1,3 +1,5 @@
+import { Book } from './../model/Book';
+import { BookService } from './../services/book.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,13 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./book-list.component.scss']
 })
 export class BookListComponent implements OnInit {
-  private bookList: string[] = [];
+  public bookList: Book[] = [];
 
-  constructor() {
-    this.bookList.push('Henri Pottier');
-  }
+  constructor(private bookService: BookService) {}
 
   ngOnInit(): void {
-    this.bookList.push('Henri Pottier 2');
+    this.bookService.getListOfBooks().subscribe((response) => {
+      this.bookList = response;
+    });
   }
 }
