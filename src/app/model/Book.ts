@@ -1,8 +1,8 @@
 export class Book {
-  private _isbn: string = '';
-  private _title: string = '';
-  private _price: number = 0;
-  private _cover: string = '';
+  private _isbn = '';
+  private _title = '';
+  private _price = 0;
+  private _cover = '';
   private _synopsis: string[] = [];
 
   public get isbn(): string {
