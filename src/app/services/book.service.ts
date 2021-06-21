@@ -4,8 +4,8 @@ import { Book } from '../model/Book';
 import { Observable } from 'rxjs';
 @Injectable()
 export class BookService {
-  private API_BASE_URL = 'https://henri-potier.techx.fr/books/';
-  private API_COMMERCIAL_OFFERS_ENDPOINT = 'commercialOffers';
+  public API_BASE_URL = 'https://henri-potier.techx.fr/books/';
+  public API_COMMERCIAL_OFFERS_ENDPOINT = 'commercialOffers';
 
   constructor(private http: HttpClient) {}
 
