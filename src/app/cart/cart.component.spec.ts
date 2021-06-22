@@ -1,8 +1,7 @@
-import { ActivatedRoute, Router } from '@angular/router';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { CartComponent } from './cart.component';
+import { ActivatedRoute } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { CartComponent } from './cart.component';
 
 describe('CartComponent', () => {
   let component: CartComponent;

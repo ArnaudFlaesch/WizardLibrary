@@ -22,6 +22,7 @@ describe('WizardLibrary tests', () => {
     cy.wait('@getBooks').then(() => {
       cy.get('.book')
         .should('have.length', 7)
+        .get('h3')
         .each((element, index) => {
           expect(element.text().trim()).to.equal(BOOKS_TITLES[index]);
         });
