@@ -12,11 +12,10 @@ export class CheckoutpageComponent implements OnInit {
 
   constructor(private route: ActivatedRoute) {}
 
-  ngOnInit() {
-    if (this.route.snapshot.paramMap.get('books')) {
-      this.booksToCheckout = JSON.parse(
-        this.route.snapshot.paramMap.get('books')!!
-      );
+  public ngOnInit(): void {
+    const bookFromParams = this.route.snapshot.paramMap.get('books');
+    if (bookFromParams) {
+      this.booksToCheckout = JSON.parse(bookFromParams);
     }
   }
 }
