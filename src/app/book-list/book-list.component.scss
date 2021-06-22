@@ -1,9 +1,8 @@
-.flexColumn {
-  display: flex;
-  flex-direction: row;
+.flexRow {
   flex-wrap: wrap;
 
-  app-book-detail {
+  div {
     flex-basis: 30%;
+    margin: 15px;
   }
 }

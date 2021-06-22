@@ -1,6 +1,8 @@
-<div class="flexColumn">
-  <app-book-detail
-    *ngFor="let book of this.bookList"
-    [book]="book"
-  ></app-book-detail>
+<div class="flexRow">
+  <div *ngFor="let book of this.bookList">
+    <app-book-detail [book]="book"></app-book-detail>
+    <button (click)="addToCartEvent(book)" class="btn btn-success mt10">
+      Ajouter au panier
+    </button>
+  </div>
 </div>
