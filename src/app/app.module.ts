@@ -11,11 +11,19 @@ import { BookListComponent } from './book-list/book-list.component';
 import { BookService } from './services/book.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CartComponent } from './cart/cart.component';
-import { HomepageComponent } from './homepage/homepage.component';
-import { CheckoutpageComponent } from './checkoutpage/checkoutpage.component';
+import { HomepageComponent } from './pages/homepage/homepage.component';
+import { CheckoutpageComponent } from './pages/checkoutpage/checkoutpage.component';
 
 @NgModule({
-  declarations: [AppComponent, BookListComponent, BookDetailComponent, NavbarComponent, CartComponent, HomepageComponent, CheckoutpageComponent],
+  declarations: [
+    AppComponent,
+    BookListComponent,
+    BookDetailComponent,
+    NavbarComponent,
+    CartComponent,
+    HomepageComponent,
+    CheckoutpageComponent
+  ],
   imports: [
     AppRoutingModule,
     BrowserModule,

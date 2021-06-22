@@ -1,5 +1,5 @@
-import { CheckoutpageComponent } from './checkoutpage/checkoutpage.component';
-import { HomepageComponent } from './homepage/homepage.component';
+import { CheckoutpageComponent } from './pages/checkoutpage/checkoutpage.component';
+import { HomepageComponent } from './pages/homepage/homepage.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
