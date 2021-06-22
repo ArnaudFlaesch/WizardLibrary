@@ -1,0 +1,23 @@
+<div class="book">
+  <img class="bookCover" src="{{ book?.cover }}" alt="{{ book?.title }}" />
+  <h3>{{ book?.title }}</h3>
+  <div>{{ book?.price }}</div>
+  <ng-template [ngIf]="displayFullSynopsis" [ngIfElse]="shortSynopsis">
+    <div class="fullSynopsis">
+      <div *ngFor="let sentence of book?.synopsis">
+        <p>{{ sentence }}</p>
+      </div>
+    </div>
+    <button class="btn btn-primary" (click)="toggleDisplayFullSynopsis()">
+      Afficher moins
+    </button>
+  </ng-template>
+  <ng-template #shortSynopsis>
+    <div *ngIf="book && book.synopsis.length > 0">
+      <p>{{ book.synopsis[0] }}</p>
+    </div>
+    <button class="btn btn-primary" (click)="toggleDisplayFullSynopsis()">
+      Afficher la suite
+    </button>
+  </ng-template>
+</div>

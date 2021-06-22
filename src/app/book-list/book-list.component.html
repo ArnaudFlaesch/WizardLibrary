@@ -1,5 +1,6 @@
-<div>
-  <div class="book" *ngFor="let book of this.bookList">
-    {{ book.title }}
-  </div>
+<div class="flexColumn">
+  <app-book-detail
+    *ngFor="let book of this.bookList"
+    [book]="book"
+  ></app-book-detail>
 </div>

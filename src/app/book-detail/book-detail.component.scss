@@ -1,0 +1,13 @@
+.book {
+  margin: 15px;
+
+  .bookCover {
+    height: 150px;
+    width: 150px;
+  }
+
+  .fullSynopsis {
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+}
