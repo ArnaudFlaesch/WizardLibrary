@@ -4,8 +4,7 @@ import { Book } from '../model/Book';
 
 @Component({
   selector: 'app-checkoutpage',
-  templateUrl: './checkoutpage.component.html',
-  styleUrls: ['./checkoutpage.component.scss']
+  templateUrl: './checkoutpage.component.html'
 })
 export class CheckoutpageComponent implements OnInit {
   public booksToCheckout: Book[] = [];
