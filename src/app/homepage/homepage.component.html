@@ -1,0 +1,18 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav-content>
+    <button
+      id="toggleCartButton"
+      class="btn btn-info alignRight"
+      mat-icon-button
+      (click)="sidenav.toggle()"
+    >
+      <span class="material-icons"> shopping_cart </span>
+    </button>
+
+    <app-book-list (addToCart)="addToCart($event)"></app-book-list>
+  </mat-sidenav-content>
+
+  <mat-sidenav #sidenav mode="side" position="end" [(opened)]="sidenavOpened">
+    <app-cart [booksInCart]="booksInCart"></app-cart>
+  </mat-sidenav>
+</mat-sidenav-container>

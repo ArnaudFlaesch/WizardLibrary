@@ -1,0 +1,35 @@
+<ng-template [ngIf]="booksInCart.length > 0" [ngIfElse]="noBooksInCart">
+  <div *ngFor="let book of booksInCart" class="flexRow">
+    <div>
+      {{ book.title }}
+    </div>
+    <div>
+      {{ book.price }}
+      <img
+        class="currencyIcon {"
+        src="assets/gringotts_coin.png"
+        alt="monnaie"
+      />
+    </div>
+    <button class="btn btn-danger">
+      <span (click)="removeFromCart(book.isbn)" class="material-icons">
+        delete
+      </span>
+    </button>
+  </div>
+  <div class="flexRow">
+    <p>Total : {{ getTotal() }}</p>
+    <img class="currencyIcon" src="assets/gringotts_coin.png" alt="monnaie" />
+  </div>
+  <div>
+    <button class="btn btn-warning" (click)="navigateToCheckout()">
+      Valider la commande
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #noBooksInCart>
+  <div class="mt10">
+    <p>Votre panier est vide</p>
+  </div>
+</ng-template>

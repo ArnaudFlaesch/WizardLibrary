@@ -1,7 +1,10 @@
 <div class="book">
   <img class="bookCover" src="{{ book?.cover }}" alt="{{ book?.title }}" />
   <h3>{{ book?.title }}</h3>
-  <div>{{ book?.price }}</div>
+  <div>
+    {{ book?.price }}
+    <img class="currencyIcon {" src="assets/gringotts_coin.png" alt="monnaie" />
+  </div>
   <ng-template [ngIf]="displayFullSynopsis" [ngIfElse]="shortSynopsis">
     <div class="fullSynopsis">
       <div *ngFor="let sentence of book?.synopsis">
