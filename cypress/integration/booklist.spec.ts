@@ -28,4 +28,16 @@ describe('Book list tests', () => {
         });
     });
   });
+
+  it('Devrait afficher 1 livre après avoir filtré la liste', () => {
+    cy.get('#searchTitle')
+      .type('azkaban')
+      .get('.book')
+      .should('have.length', 1)
+      .get('h3')
+      .should('have.length', 1)
+      .should('have.text', "Henri Potier et le Prisonnier d'Azkaban")
+      .get('.displayFullSynopsisButton')
+      .click();
+  });
 });
