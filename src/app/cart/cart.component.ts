@@ -1,19 +1,31 @@
-import { Component, Input } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { Book } from '../model/Book';
+import { CartItem } from '../model/CartItem';
+import { getBooksGroupedByQuantity } from '../utils/book-price-utils';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html'
 })
-export class CartComponent {
+export class CartComponent implements OnChanges {
   @Input() booksInCart: Book[] = [];
+  @Output() removeBookFromCart = new EventEmitter<string>();
+
+  public booksGroupedByIsbn: CartItem[] = [];
 
   constructor(private router: Router) {}
 
-  public removeFromCart(bookIsbnToRemove: string): void {
-    this.booksInCart = this.booksInCart.filter(
-      (bookInCart) => bookInCart.isbn !== bookIsbnToRemove
+  public ngOnChanges(changes: SimpleChanges): void {
+    this.booksGroupedByIsbn = getBooksGroupedByQuantity(
+      changes['booksInCart'].currentValue
     );
   }
 
@@ -26,5 +38,9 @@ export class CartComponent {
       '/checkout',
       { books: JSON.stringify(this.booksInCart) }
     ]);
+  }
+
+  public removeFromCart(bookIsbnToRemove: string): void {
+    this.removeBookFromCart.emit(bookIsbnToRemove);
   }
 }

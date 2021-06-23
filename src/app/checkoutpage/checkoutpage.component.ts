@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Book } from '../../model/Book';
+import { Book } from '../model/Book';
 
 @Component({
   selector: 'app-checkoutpage',

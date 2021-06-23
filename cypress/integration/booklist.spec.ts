@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('WizardLibrary tests', () => {
+describe('Book list tests', () => {
   // @TODO Mettre en secret
   const API_BASE_URL = 'https://henri-potier.techx.fr/books/';
   const BOOKS_TITLES = [

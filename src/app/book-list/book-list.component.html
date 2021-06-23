@@ -1,8 +1,42 @@
-<div class="flexRow">
-  <div *ngFor="let book of this.bookList">
-    <app-book-detail [book]="book"></app-book-detail>
-    <button (click)="addToCartEvent(book)" class="btn btn-success mt10">
-      Ajouter au panier
-    </button>
-  </div>
-</div>
+<mat-sidenav-container>
+  <mat-sidenav-content>
+    <div class="flexRow alignRight">
+      <div class="form-outline m10">
+        <input
+          type="search"
+          class="form-control"
+          [formControl]="searchControl"
+          placeholder="Chercher un livre"
+          aria-label="Search"
+        />
+      </div>
+
+      <button
+        id="toggleCartButton"
+        class="btn btn-warning btn-sm m10 alignRight"
+        mat-icon-button
+        (click)="sidenav.toggle()"
+      >
+        <span class="material-icons"> shopping_cart </span>
+      </button>
+    </div>
+    <div class="flexRow">
+      <div class="bookDetail" *ngFor="let book of this.filteredBookList">
+        <app-book-detail [book]="book"></app-book-detail>
+        <button
+          (click)="addToCart(book)"
+          class="btn btn-success mt10 addBookToCartButton"
+        >
+          Ajouter au panier
+        </button>
+      </div>
+    </div>
+  </mat-sidenav-content>
+
+  <mat-sidenav #sidenav mode="side" position="end" [(opened)]="sidenavOpened">
+    <app-cart
+      (removeBookFromCart)="removeBooksFromCart($event)"
+      [booksInCart]="booksInCart"
+    ></app-cart>
+  </mat-sidenav>
+</mat-sidenav-container>
