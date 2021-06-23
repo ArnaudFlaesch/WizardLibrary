@@ -10,7 +10,7 @@
     "test:coverage": "npm run test -- --code-coverage",
     "test:ci": "npm run test:coverage -- --no-watch --no-progress --browsers=ChromeHeadlessCI && run-p -r serve-dist cy:run:ci",
     "cy:open": "cypress open",
-    "cy:run": "cypress run --headless --browser firefox",
+    "cy:run": "cypress run --headless",
     "cy:run:local": "wait-on http://localhost:4200 && npm run cy:run",
     "cy:run:ci": "wait-on http://localhost:8080 && npm run cy:run -- --config-file cypress-ci.json",
     "cy:verify": "npx cypress verify",
