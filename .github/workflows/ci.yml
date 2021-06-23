@@ -36,6 +36,9 @@ jobs:
       - name: Build
         run: |
           npm run build
+
+      - name: Instrument code
+        run: |
           npx nyc instrument dist/WizardLibrary dist/WizardLibrary --exclude-after-remap=false --complete-copy --in-place
 
       - name: Test
