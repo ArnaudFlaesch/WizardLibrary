@@ -40,9 +40,9 @@ jobs:
       - name: Test
         run: |
           npm run test:coverage -- --no-watch --no-progress --browsers=ChromeHeadlessCI
-          rm -rf .nyc_output
+          rm -vrf .nyc_output
           npm run e2e:ci
-          rm -rf .nyc_output
+          rm -vrf .nyc_output
 
       - name: Generate coverage
         run: |
