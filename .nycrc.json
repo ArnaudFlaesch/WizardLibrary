@@ -2,7 +2,7 @@
     "report-dir": "cypress-coverage",
     "extends": "@istanbuljs/nyc-config-typescript",
     "reporter": [
-        "html",
+        "clover",
         "json"
     ],
     "exclude": [
