@@ -1,7 +1,10 @@
 {
     "report-dir": "cypress-coverage",
     "extends": "@istanbuljs/nyc-config-typescript",
-    "all": true,
+    "reporter": [
+        "html",
+        "json"
+    ],
     "exclude": [
         "./coverage/**",
         "./cypress-coverage/**",
