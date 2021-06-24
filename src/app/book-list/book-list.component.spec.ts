@@ -1,6 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { BookService } from './../services/book.service';
+import { ApiService } from '../services/api.service';
 import { BookListComponent } from './book-list.component';
 
 describe('BookListComponent', () => {
@@ -11,7 +11,7 @@ describe('BookListComponent', () => {
     await TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       declarations: [BookListComponent],
-      providers: [BookService]
+      providers: [ApiService]
     }).compileComponents();
   });
 

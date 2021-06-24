@@ -36,7 +36,7 @@ export class CartComponent implements OnChanges {
   public navigateToCheckout(): void {
     this.router.navigate([
       '/checkout',
-      { books: JSON.stringify(this.booksInCart) }
+      { books: JSON.stringify(this.booksGroupedByIsbn) }
     ]);
   }
 

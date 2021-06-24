@@ -1,4 +1,41 @@
 <p>Checkout</p>
-<div *ngFor="let book of booksToCheckout">
-  {{ book.title }}
-</div>
+
+<ng-template [ngIf]="booksToCheckout.length > 0" [ngIfElse]="noBooksInCart">
+  <div *ngFor="let cartItem of booksToCheckout" class="flexRow cartItem">
+    <div class="cartItemTitle">
+      {{ cartItem.book.title }}
+    </div>
+    <div class="cartItemPrice">
+      {{ cartItem.book.price }}
+      <img
+        class="currencyIcon {"
+        src="assets/gringotts_coin.png"
+        alt="monnaie"
+      />
+    </div>
+    <div class="cartItemQuantity">Quantité : {{ cartItem.quantity }}</div>
+    <button class="btn btn-danger">
+      <span class="material-icons removeFromCartButton"> delete </span>
+    </button>
+  </div>
+  <div class="flexRow">
+    <p id="totalPrice">Total : {{ getTotalPrice() }}</p>
+    <img class="currencyIcon" src="assets/gringotts_coin.png" alt="monnaie" />
+  </div>
+  <div class="flexRow">
+    <p id="totalPrice">
+      Total après application de la meilleure réduction :
+      {{ resultAfterBestCommercialOffer }}
+    </p>
+    <img class="currencyIcon" src="assets/gringotts_coin.png" alt="monnaie" />
+  </div>
+  <div>
+    <button class="btn btn-warning">Valider la commande</button>
+  </div>
+</ng-template>
+
+<ng-template #noBooksInCart>
+  <div class="mt10">
+    <p>Vous n'avez aucun livre dans votre panier.</p>
+  </div>
+</ng-template>

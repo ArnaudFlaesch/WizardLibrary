@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Book } from './../model/Book';
-import { BookService } from './../services/book.service';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-book-list',
@@ -19,10 +19,10 @@ export class BookListComponent implements OnInit {
   public searchControl: FormControl = new FormControl();
   private debounce = 400;
 
-  constructor(private bookService: BookService) {}
+  constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.bookService.getListOfBooks().subscribe((response) => {
+    this.apiService.getListOfBooks().subscribe((response) => {
       this.bookListFromServer = response;
       this.filteredBookList = this.bookListFromServer;
     });
