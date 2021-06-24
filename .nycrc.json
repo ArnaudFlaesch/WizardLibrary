@@ -3,7 +3,7 @@
     "extends": "@istanbuljs/nyc-config-typescript",
     "reporter": [
         "clover",
-        "json"
+        "lcov"
     ],
     "exclude": [
         "./coverage/**",
