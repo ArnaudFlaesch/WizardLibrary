@@ -4,8 +4,7 @@ import { format } from 'date-fns';
 
 @Component({
   selector: 'app-manage-orders',
-  templateUrl: './manage-orders.component.html',
-  styleUrls: ['./manage-orders.component.scss']
+  templateUrl: './manage-orders.component.html'
 })
 export class ManageOrdersComponent implements OnInit {
   public validatedOrders: Order[] = [];
