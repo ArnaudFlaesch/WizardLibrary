@@ -1,4 +1,4 @@
-<p>Checkout</p>
+<h2>Passer une commande</h2>
 
 <ng-template [ngIf]="booksToCheckout.length > 0" [ngIfElse]="noBooksInCart">
   <div *ngFor="let cartItem of booksToCheckout" class="flexRow cartItem">
@@ -19,7 +19,7 @@
     </button>
   </div>
   <div class="flexRow">
-    <p id="totalPrice">Total : {{ getTotalPrice() }}</p>
+    <p id="totalPrice">Total : {{ getTotalPriceBeforeReductions() }}</p>
     <img class="currencyIcon" src="assets/gringotts_coin.png" alt="monnaie" />
   </div>
   <div class="flexRow">
@@ -30,7 +30,9 @@
     <img class="currencyIcon" src="assets/gringotts_coin.png" alt="monnaie" />
   </div>
   <div>
-    <button class="btn btn-warning">Valider la commande</button>
+    <button (click)="validateOrder()" class="btn btn-warning">
+      Valider la commande
+    </button>
   </div>
 </ng-template>
 

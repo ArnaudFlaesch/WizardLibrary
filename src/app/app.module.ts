@@ -13,6 +13,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutpageComponent } from './checkoutpage/checkoutpage.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ManageOrdersComponent } from './manage-orders/manage-orders.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BookDetailComponent,
     NavbarComponent,
     CartComponent,
-    CheckoutpageComponent
+    CheckoutpageComponent,
+    ManageOrdersComponent
   ],
   imports: [
     AppRoutingModule,

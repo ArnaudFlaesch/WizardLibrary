@@ -23,6 +23,12 @@ export function getBooksGroupedByQuantity(books: Book[]): CartItem[] {
   return cartItems;
 }
 
+/**
+ * Calcule le meilleur prix possible à partir d'un prix de base et d'une liste d'offres commerciales.
+ * @param totalPrice Le total correspondant à la somme des prix des livres commandés.
+ * @param commercialOffers La liste des offres commerciales récupérées à partir de la liste des livres.
+ * @returns Le prix le plus bas parmi ceux calculés avec chaque offre commerciale.
+ */
 export function calculateBestPriceFromCommercialOffers(
   totalPrice: number,
   commercialOffers: CommercialOffer[]

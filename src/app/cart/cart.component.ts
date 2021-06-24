@@ -34,10 +34,8 @@ export class CartComponent implements OnChanges {
   }
 
   public navigateToCheckout(): void {
-    this.router.navigate([
-      '/checkout',
-      { books: JSON.stringify(this.booksGroupedByIsbn) }
-    ]);
+    localStorage.setItem('cartItems', JSON.stringify(this.booksGroupedByIsbn));
+    this.router.navigate(['/checkout']);
   }
 
   public removeFromCart(bookIsbnToRemove: string): void {

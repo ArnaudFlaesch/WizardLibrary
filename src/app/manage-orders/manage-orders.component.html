@@ -1,0 +1,16 @@
+<h2>Commandes passées</h2>
+
+<div>
+  <div *ngFor="let order of validatedOrders">
+    <span>Date : {{ formatOrderDate(order.orderDate) }}</span>
+    <div *ngFor="let cartItem of order.items">
+      <div class="flexRow">
+        <app-book-detail [book]="cartItem.book"></app-book-detail>
+        <div class="flexColumn">
+          <label for="bookQuantity">Quantité</label>
+          <span id="bookQuantity">{{ cartItem.quantity }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
