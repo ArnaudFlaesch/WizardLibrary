@@ -35,11 +35,7 @@ jobs:
 
       - name: Build
         run: |
-          npm run build
-
-      - name: Instrument code
-        run: |
-          npx nyc instrument dist/WizardLibrary dist/WizardLibrary --exclude-after-remap=false --complete-copy --in-place
+          npm run build -- --base-href=https://arnaudflaesch.github.io/WizardLibrary/
 
       - name: Test
         run: npm run test:ci
@@ -66,7 +62,6 @@ jobs:
       - name: Deploy with gh-pages
         if: success() && github.ref == 'refs/heads/master'
         run: |
-          npm run build -- --base-href=https://arnaudflaesch.github.io/WizardLibrary/
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           npx gh-pages-clean
           npx gh-pages -d dist -u "github-actions-bot <support+actions@github.com>"
