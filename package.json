@@ -8,7 +8,6 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test:coverage": "npm run test -- --code-coverage",
-    "test:ci": "npm run test:coverage -- --no-watch --no-progress --browsers=ChromeHeadlessCI && npm run e2e:ci",
     "cy:open": "cypress open",
     "cy:run": "cypress run --headless",
     "cy:verify": "npx cypress verify",

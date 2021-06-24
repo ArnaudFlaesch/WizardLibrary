@@ -38,7 +38,10 @@ jobs:
           npm run build -- --base-href=https://arnaudflaesch.github.io/WizardLibrary/
 
       - name: Test
-        run: npm run test:ci
+        run: |
+          npm run test:coverage -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+          rm -rf .nyc_output
+          npm run e2e:ci
 
       - name: Generate coverage
         run: |
