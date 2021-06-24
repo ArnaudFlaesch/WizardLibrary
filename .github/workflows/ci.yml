@@ -50,7 +50,7 @@ jobs:
           cp cypress-coverage/coverage-final.json coverage-reports/from-cypress.json
           cp karma-coverage/coverage-final.json coverage-reports/from-karma.json
           npx nyc merge coverage-reports && mv coverage.json .nyc_output/out.json
-          npx nyc report  --reporter=clover --report-dir coverage
+          npx nyc report  --reporter=clover --reporter=lcov --report-dir coverage
 
       - name: Send coverage report
         run: |
