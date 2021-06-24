@@ -83,6 +83,13 @@
           },
           "defaultConfiguration": "development"
         },
+        "serve-coverage": {
+          "builder": "ngx-build-plus:dev-server",
+          "options": {
+            "browserTarget": "WizardLibrary:build",
+            "extraWebpackConfig": "./cypress/coverage.webpack.js"
+          }
+        },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
@@ -106,6 +113,57 @@
               "src/styles.scss"
             ],
             "scripts": []
+          }
+        },
+        "cypress-run": {
+          "builder": "@briebug/cypress-schematic:cypress",
+          "options": {
+            "devServerTarget": "WizardLibrary:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "WizardLibrary:serve:production"
+            }
+          }
+        },
+        "cypress-open": {
+          "builder": "@briebug/cypress-schematic:cypress",
+          "options": {
+            "devServerTarget": "WizardLibrary:serve",
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "WizardLibrary:serve:production"
+            }
+          }
+        },
+        "e2e": {
+          "builder": "@briebug/cypress-schematic:cypress",
+          "options": {
+            "devServerTarget": "WizardLibrary:serve-coverage",
+            "watch": true,
+            "headless": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "WizardLibrary:serve-coverage:production"
+            }
+          }
+        },
+        "e2e-ci": {
+          "builder": "@briebug/cypress-schematic:cypress",
+          "options": {
+            "browser": "chrome",
+            "devServerTarget": "WizardLibrary:serve-coverage",
+            "headless": true,
+            "watch": false
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "WizardLibrary:serve-coverage:production"
+            }
           }
         }
       }

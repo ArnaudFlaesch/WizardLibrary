@@ -13,6 +13,7 @@
 // the project's config changing)
 
 import registerCodeCoverageTasks = require('@cypress/code-coverage/task');
+import cypressTypeScriptPreprocessor = require('./cy-ts-preprocessor');
 
 /**
  * @type {Cypress.PluginConfig}
@@ -20,6 +21,8 @@ import registerCodeCoverageTasks = require('@cypress/code-coverage/task');
 module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
+
+  on('file:preprocessor', cypressTypeScriptPreprocessor);
 
   // let's increase the browser window size when running headlessly
   // this will produce higher resolution images and videos

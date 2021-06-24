@@ -12,6 +12,6 @@
     "video": false,
     "videoCompression": false,
     "env": {
-        "coverage": false
+        "coverage": true
     }
 }
