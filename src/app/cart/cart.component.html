@@ -1,25 +1,9 @@
 <ng-template [ngIf]="booksGroupedByIsbn.length > 0" [ngIfElse]="noBooksInCart">
-  <div *ngFor="let cartItem of booksGroupedByIsbn" class="flexRow cartItem">
-    <div class="cartItemTitle">
-      {{ cartItem.book.title }}
-    </div>
-    <div class="cartItemPrice">
-      {{ cartItem.book.price }}
-      <img
-        class="currencyIcon {"
-        src="assets/gringotts_coin.png"
-        alt="monnaie"
-      />
-    </div>
-    <div class="cartItemQuantity">Quantité : {{ cartItem.quantity }}</div>
-    <button class="btn btn-danger">
-      <span
-        (click)="removeFromCart(cartItem.book.isbn)"
-        class="material-icons removeFromCartButton"
-      >
-        delete
-      </span>
-    </button>
+  <div
+    *ngFor="let cartItem of booksGroupedByIsbn; let cartItemIndex = index"
+    class="flexRow cartItem"
+  >
+    <app-cart-item-detail [cartItem]="cartItem"></app-cart-item-detail>
   </div>
   <div class="flexRow">
     <p id="totalPrice">Total : {{ getTotal() }}</p>

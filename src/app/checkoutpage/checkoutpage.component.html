@@ -1,56 +1,61 @@
 <h2>Passer une commande</h2>
 
-<ng-template [ngIf]="requestCompleted" [ngIfElse]="requestNotCompleted">
-  <ng-template [ngIf]="booksToCheckout.length > 0" [ngIfElse]="noBooksInCart">
-    <div *ngFor="let cartItem of booksToCheckout" class="flexRow cartItem">
-      <app-book-detail
-        [book]="cartItem.book"
-        [displaySynopsisBlock]="false"
-      ></app-book-detail>
-      <div class="cartItemQuantity">Quantité : {{ cartItem.quantity }}</div>
-      <button class="btn btn-danger">
-        <span class="material-icons removeFromCartButton"> delete </span>
-      </button>
-    </div>
-    <div class="flexRow">
-      <p>
-        <span>Total :</span>
-        <span id="priceBeforeReduction">{{
-          this.priceBeforeCommercialOffer
-        }}</span>
-      </p>
-      <img class="currencyIcon" src="assets/gringotts_coin.png" alt="monnaie" />
-    </div>
+<ng-template [ngIf]="booksToCheckout.length > 0" [ngIfElse]="noBooksInCart">
+  <div
+    *ngFor="let cartItem of booksToCheckout; let cartItemIndex = index"
+    class="flexRow cartItem"
+  >
+    <app-cart-item-detail
+      [cartItem]="cartItem"
+      (removeItemFromCart)="removeItemFromCart(cartItemIndex)"
+    ></app-cart-item-detail>
+  </div>
+  <div class="flexRow">
+    <p>
+      <span>Total :</span>
+      <span id="priceBeforeReduction">{{
+        this.priceBeforeCommercialOffer
+      }}</span>
+    </p>
+    <img class="currencyIcon" src="assets/gringotts_coin.png" alt="monnaie" />
+  </div>
 
-    <div class="flexRow">
-      <p>
-        <span>Total après application de la meilleure réduction :</span>
+  <div class="flexRow">
+    <span>Total après application de la meilleure réduction :</span>
+    <p>
+      <ng-template
+        [ngIf]="commercialOffersRequestCompleted"
+        [ngIfElse]="requestNotCompleted"
+      >
         <span id="priceAfterReduction">{{
           priceAfterBestCommercialOffer
         }}</span>
-      </p>
-      <img class="currencyIcon" src="assets/gringotts_coin.png" alt="monnaie" />
-    </div>
-    <div>
-      <button
-        id="validateOrder"
-        (click)="validateOrder()"
-        class="btn btn-warning"
-      >
-        Valider la commande
-      </button>
-    </div>
-  </ng-template>
-
-  <ng-template #noBooksInCart>
-    <div class="mt10">
-      <p>Vous n'avez aucun livre dans votre panier.</p>
-    </div>
-  </ng-template>
+        <img
+          class="currencyIcon"
+          src="assets/gringotts_coin.png"
+          alt="monnaie"
+        />
+      </ng-template>
+      <ng-template #requestNotCompleted>
+        <div class="spinner-border" role="status">
+          <span class="sr-only"></span>
+        </div>
+      </ng-template>
+    </p>
+  </div>
+  <div>
+    <button
+      id="validateOrder"
+      (click)="validateOrder()"
+      class="btn btn-warning"
+    >
+      Valider la commande
+    </button>
+  </div>
 </ng-template>
 
-<ng-template #requestNotCompleted>
-  <div class="spinner-border" role="status">
-    <span class="sr-only"></span>
+<ng-template #noBooksInCart>
+  <div class="mt10">
+    <p>Vous n'avez aucun livre dans votre panier.</p>
   </div>
 </ng-template>

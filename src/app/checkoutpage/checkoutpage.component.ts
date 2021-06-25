@@ -15,7 +15,7 @@ export class CheckoutpageComponent implements OnInit {
   public booksToCheckout: CartItem[] = [];
   public priceBeforeCommercialOffer = 0;
   public priceAfterBestCommercialOffer = 0;
-  public requestCompleted = false;
+  public commercialOffersRequestCompleted = false;
 
   constructor(private apiService: ApiService, private router: Router) {}
 
@@ -42,10 +42,8 @@ export class CheckoutpageComponent implements OnInit {
                 this.priceBeforeCommercialOffer,
                 commercialOffers
               );
-            this.requestCompleted = true;
+            this.commercialOffersRequestCompleted = true;
           });
-      } else {
-        this.requestCompleted = true;
       }
     }
   }
@@ -63,5 +61,12 @@ export class CheckoutpageComponent implements OnInit {
     localStorage.setItem('validatedOrders', JSON.stringify(validatedOrders));
     localStorage.setItem('cartItems', '');
     this.router.navigate(['/manageOrders']);
+  }
+
+  public removeItemFromCart(itemIndex: number): void {
+    this.booksToCheckout = this.booksToCheckout.filter(
+      (cartItem, index) => index !== itemIndex
+    );
+    localStorage.setItem('cartItems', JSON.stringify(this.booksToCheckout));
   }
 }
