@@ -22,7 +22,7 @@
     <p>
       <span>Total :</span>
       <span id="priceBeforeReduction">{{
-        getTotalPriceBeforeReductions()
+        this.priceBeforeCommercialOffer
       }}</span>
     </p>
     <img class="currencyIcon" src="assets/gringotts_coin.png" alt="monnaie" />
@@ -30,7 +30,7 @@
   <div class="flexRow">
     <p>
       <span>Total après application de la meilleure réduction :</span>
-      <span id="priceAfterReduction">{{ resultAfterBestCommercialOffer }}</span>
+      <span id="priceAfterReduction">{{ priceAfterBestCommercialOffer }}</span>
     </p>
     <img class="currencyIcon" src="assets/gringotts_coin.png" alt="monnaie" />
   </div>

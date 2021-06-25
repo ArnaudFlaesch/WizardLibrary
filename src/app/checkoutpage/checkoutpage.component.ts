@@ -13,7 +13,8 @@ import {
 })
 export class CheckoutpageComponent implements OnInit {
   public booksToCheckout: CartItem[] = [];
-  public resultAfterBestCommercialOffer = 0;
+  public priceBeforeCommercialOffer = 0;
+  public priceAfterBestCommercialOffer = 0;
 
   constructor(private apiService: ApiService, private router: Router) {}
 
@@ -26,16 +27,18 @@ export class CheckoutpageComponent implements OnInit {
         return Array(cartItem.quantity).fill(cartItem.book.isbn);
       });
 
-      const totalPrice = getTotalPriceBeforeReductions(this.booksToCheckout);
+      this.priceBeforeCommercialOffer = getTotalPriceBeforeReductions(
+        this.booksToCheckout
+      );
 
-      this.resultAfterBestCommercialOffer = totalPrice;
+      this.priceAfterBestCommercialOffer = this.priceBeforeCommercialOffer;
 
       this.apiService
         .getCommercialOffers(isbns)
         .subscribe((commercialOffers) => {
-          this.resultAfterBestCommercialOffer =
+          this.priceAfterBestCommercialOffer =
             calculateBestPriceFromCommercialOffers(
-              totalPrice,
+              this.priceBeforeCommercialOffer,
               commercialOffers
             );
         });
