@@ -28,7 +28,7 @@ module.exports = function (config) {
     coverageReporter: {
       dir: require('path').join(__dirname, './karma-coverage'),
       subdir: '.',
-      reporters: [{ type: 'json' }]
+      reporters: [{ type: 'json' }, { type: 'lcov' }]
     },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
