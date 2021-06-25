@@ -1,8 +1,11 @@
+import { CartItem } from './../model/CartItem';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CartItem } from '../model/CartItem';
 import { ApiService } from '../services/api.service';
-import { calculateBestPriceFromCommercialOffers } from '../utils/book-price-utils';
+import {
+  calculateBestPriceFromCommercialOffers,
+  getTotalPriceBeforeReductions
+} from '../utils/book-utils';
 
 @Component({
   selector: 'app-checkoutpage',
@@ -23,14 +26,13 @@ export class CheckoutpageComponent implements OnInit {
         return Array(cartItem.quantity).fill(cartItem.book.isbn);
       });
 
-      const totalPrice = this.getTotalPriceBeforeReductions();
+      const totalPrice = getTotalPriceBeforeReductions(this.booksToCheckout);
 
       this.resultAfterBestCommercialOffer = totalPrice;
 
       this.apiService
         .getCommercialOffers(isbns)
         .subscribe((commercialOffers) => {
-          console.log(commercialOffers);
           this.resultAfterBestCommercialOffer =
             calculateBestPriceFromCommercialOffers(
               totalPrice,
@@ -38,13 +40,6 @@ export class CheckoutpageComponent implements OnInit {
             );
         });
     }
-  }
-
-  public getTotalPriceBeforeReductions(): number {
-    return this.booksToCheckout.reduce(
-      (total, cartItem) => total + cartItem.quantity * cartItem.book.price,
-      0
-    );
   }
 
   public validateOrder(): void {

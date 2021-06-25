@@ -2,7 +2,7 @@ import {
   CommercialOffer,
   CommercialOfferType,
   SliceOffer
-} from './../model/CommercialOffer';
+} from '../model/CommercialOffer';
 import { Book } from '../model/Book';
 import { CartItem } from '../model/CartItem';
 
@@ -21,6 +21,13 @@ export function getBooksGroupedByQuantity(books: Book[]): CartItem[] {
     }
   });
   return cartItems;
+}
+
+export function getTotalPriceBeforeReductions(cartItems: CartItem[]): number {
+  return cartItems.reduce(
+    (total, cartItem) => total + cartItem.quantity * cartItem.book.price,
+    0
+  );
 }
 
 /**

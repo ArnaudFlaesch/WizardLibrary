@@ -9,7 +9,7 @@ import {
 import { Router } from '@angular/router';
 import { Book } from '../model/Book';
 import { CartItem } from '../model/CartItem';
-import { getBooksGroupedByQuantity } from '../utils/book-price-utils';
+import { getBooksGroupedByQuantity } from '../utils/book-utils';
 
 @Component({
   selector: 'app-cart',
