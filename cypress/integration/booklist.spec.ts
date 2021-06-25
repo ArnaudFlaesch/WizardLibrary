@@ -1,7 +1,6 @@
 /// <reference types="cypress" />
 
-describe('Book list tests', () => {
-  // @TODO Mettre en secret
+describe("Tests de la page d'accueil / Liste de livres", () => {
   const API_BASE_URL = 'https://henri-potier.techx.fr/books/';
   const BOOKS_TITLES = [
     "Henri Potier à l'école des sorciers",
@@ -14,7 +13,9 @@ describe('Book list tests', () => {
   ];
 
   before(() => {
-    cy.intercept('GET', API_BASE_URL).as('getBooks');
+    cy.intercept('GET', API_BASE_URL, {
+      fixture: 'book-list-response.json'
+    }).as('getBooks');
     cy.visit('/');
   });
 

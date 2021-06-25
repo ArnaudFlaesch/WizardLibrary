@@ -1,7 +1,7 @@
 <h2>Commandes passées</h2>
 
-<div>
-  <div *ngFor="let order of validatedOrders">
+<ng-template [ngIf]="validatedOrders.length > 0" [ngIfElse]="noPastOrders">
+  <div class="pastOrder" *ngFor="let order of validatedOrders">
     <span>Date : {{ formatOrderDate(order.orderDate) }}</span>
     <div *ngFor="let cartItem of order.items">
       <div class="flexRow">
@@ -13,4 +13,10 @@
       </div>
     </div>
   </div>
-</div>
+</ng-template>
+
+<ng-template #noPastOrders>
+  <div class="mt10">
+    <p>Vous n'avez passé aucune commande.</p>
+  </div>
+</ng-template>

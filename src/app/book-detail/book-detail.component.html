@@ -11,20 +11,21 @@
         <p>{{ sentence }}</p>
       </div>
     </div>
-    <button class="btn btn-info btn-sm" (click)="toggleDisplayFullSynopsis()">
-      Afficher moins
-    </button>
+
+    <span (click)="toggleDisplayFullSynopsis()" class="toggleSynopsis">
+      Afficher moins</span
+    >
   </ng-template>
   <ng-template #shortSynopsis>
     <div *ngIf="book && book.synopsis.length > 0">
       <p>
         {{ book.synopsis[0] }}
-        <button
-          class="btn btn-info btn-sm displayFullSynopsisButton"
+        <span
           (click)="toggleDisplayFullSynopsis()"
+          class="displayFullSynopsisButton toggleSynopsis"
         >
-          Afficher la suite
-        </button>
+          Afficher la suite</span
+        >
       </p>
     </div>
   </ng-template>
