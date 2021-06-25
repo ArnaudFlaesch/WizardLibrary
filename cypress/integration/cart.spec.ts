@@ -21,8 +21,18 @@ describe('Tests du panier', () => {
       .should('have.length', 0);
   });
 
-  it('Devrait afficher les 3 premiers livres dans le panier', () => {
+  it('Devrait ajouter les 3 premiers livres dans le panier', () => {
+    const CART_BOOKS_TITLES = [
+      "Henri Potier à l'école des sorciers",
+      'Henri Potier et la Chambre des secrets',
+      "Henri Potier et le Prisonnier d'Azkaban"
+    ];
+
     cy.wait('@getBooks').then(() => {
+      cy.intercept('GET', API_BASE_URL + '/**/commercialOffers', {
+        fixture: 'commercial-offers-response.json'
+      }).as('getCommercialOffers');
+
       cy.get('.addBookToCartButton')
         .eq(0)
         .scrollIntoView()
@@ -38,7 +48,30 @@ describe('Tests du panier', () => {
         .get('.cartItem')
         .should('have.length', 3)
         .get('#totalPrice')
-        .should('have.text', 'Total : 95');
+        .should('have.text', 'Total : 95')
+        .get('#validateCartButton')
+        .scrollIntoView()
+        .click()
+        .wait('@getCommercialOffers')
+        .then(() => {
+          cy.get('h2')
+            .should('have.text', 'Passer une commande')
+            .get('p')
+            .get('.cartItem')
+            .should('have.length', 3)
+            .get('.cartItemTitle')
+            .each((element, index) => {
+              expect(element.text().trim()).to.equal(CART_BOOKS_TITLES[index]);
+            })
+            .get('#priceBeforeReduction')
+            .should('have.text', '95')
+            .get('#priceAfterReduction')
+            .should('have.text', '80')
+            .get('#validateOrder')
+            .click()
+            .get('.pastOrder')
+            .should('have.length', 1);
+        });
     });
   });
 });

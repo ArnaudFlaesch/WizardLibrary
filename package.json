@@ -50,6 +50,7 @@
     "@typescript-eslint/eslint-plugin": "4.27.0",
     "@typescript-eslint/parser": "4.27.0",
     "cypress": "^7.5.0",
+    "cypress-localstorage-commands": "1.4.5",
     "cypress-wait-until": "^1.7.1",
     "cypress-webpack-preprocessor-v5": "*",
     "eslint": "^7.29.0",

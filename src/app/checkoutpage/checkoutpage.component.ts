@@ -30,6 +30,7 @@ export class CheckoutpageComponent implements OnInit {
       this.apiService
         .getCommercialOffers(isbns)
         .subscribe((commercialOffers) => {
+          console.log(commercialOffers);
           this.resultAfterBestCommercialOffer =
             calculateBestPriceFromCommercialOffers(
               totalPrice,

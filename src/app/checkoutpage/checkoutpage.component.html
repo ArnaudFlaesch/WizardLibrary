@@ -19,18 +19,27 @@
     </button>
   </div>
   <div class="flexRow">
-    <p id="totalPrice">Total : {{ getTotalPriceBeforeReductions() }}</p>
+    <p>
+      <span>Total :</span>
+      <span id="priceBeforeReduction">{{
+        getTotalPriceBeforeReductions()
+      }}</span>
+    </p>
     <img class="currencyIcon" src="assets/gringotts_coin.png" alt="monnaie" />
   </div>
   <div class="flexRow">
-    <p id="totalPrice">
-      Total après application de la meilleure réduction :
-      {{ resultAfterBestCommercialOffer }}
+    <p>
+      <span>Total après application de la meilleure réduction :</span>
+      <span id="priceAfterReduction">{{ resultAfterBestCommercialOffer }}</span>
     </p>
     <img class="currencyIcon" src="assets/gringotts_coin.png" alt="monnaie" />
   </div>
   <div>
-    <button (click)="validateOrder()" class="btn btn-warning">
+    <button
+      id="validateOrder"
+      (click)="validateOrder()"
+      class="btn btn-warning"
+    >
       Valider la commande
     </button>
   </div>
