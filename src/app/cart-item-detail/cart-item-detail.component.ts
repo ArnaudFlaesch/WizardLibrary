@@ -3,8 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-cart-item-detail',
-  templateUrl: './cart-item-detail.component.html',
-  styleUrls: ['./cart-item-detail.component.scss']
+  templateUrl: './cart-item-detail.component.html'
 })
 export class CartItemDetailComponent {
   @Input()
