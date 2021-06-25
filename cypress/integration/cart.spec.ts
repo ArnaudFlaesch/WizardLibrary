@@ -59,7 +59,7 @@ describe('Tests du panier', () => {
             .get('p')
             .get('.cartItem')
             .should('have.length', 3)
-            .get('.cartItemTitle')
+            .get('.bookTitle')
             .each((element, index) => {
               expect(element.text().trim()).to.equal(CART_BOOKS_TITLES[index]);
             })

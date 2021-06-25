@@ -5,7 +5,10 @@
     <span>Date : {{ formatOrderDate(order.orderDate) }}</span>
     <div *ngFor="let cartItem of order.items">
       <div class="flexRow">
-        <app-book-detail [book]="cartItem.book"></app-book-detail>
+        <app-book-detail
+          [book]="cartItem.book"
+          [displaySynopsisBlock]="false"
+        ></app-book-detail>
         <div class="flexColumn">
           <label for="bookQuantity">Quantité</label>
           <span id="bookQuantity">{{ cartItem.quantity }}</span>

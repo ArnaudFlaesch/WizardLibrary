@@ -1,3 +1,4 @@
+import { CartItem } from './../model/CartItem';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
@@ -22,6 +23,13 @@ export class BookListComponent implements OnInit {
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
+    const booksInCart = localStorage.getItem('cartItems');
+    if (booksInCart) {
+      this.booksInCart = JSON.parse(booksInCart).map(
+        (cartItem: CartItem) => cartItem.book
+      );
+    }
+
     this.apiService.getListOfBooks().subscribe((response) => {
       this.bookListFromServer = response;
       this.filteredBookList = this.bookListFromServer;

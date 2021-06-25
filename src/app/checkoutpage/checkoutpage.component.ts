@@ -15,6 +15,7 @@ export class CheckoutpageComponent implements OnInit {
   public booksToCheckout: CartItem[] = [];
   public priceBeforeCommercialOffer = 0;
   public priceAfterBestCommercialOffer = 0;
+  public requestCompleted = false;
 
   constructor(private apiService: ApiService, private router: Router) {}
 
@@ -22,26 +23,30 @@ export class CheckoutpageComponent implements OnInit {
     const cartItems = localStorage.getItem('cartItems');
     if (cartItems) {
       this.booksToCheckout = JSON.parse(cartItems);
-
-      const isbns = this.booksToCheckout.flatMap((cartItem) => {
-        return Array(cartItem.quantity).fill(cartItem.book.isbn);
-      });
-
-      this.priceBeforeCommercialOffer = getTotalPriceBeforeReductions(
-        this.booksToCheckout
-      );
-
-      this.priceAfterBestCommercialOffer = this.priceBeforeCommercialOffer;
-
-      this.apiService
-        .getCommercialOffers(isbns)
-        .subscribe((commercialOffers) => {
-          this.priceAfterBestCommercialOffer =
-            calculateBestPriceFromCommercialOffers(
-              this.priceBeforeCommercialOffer,
-              commercialOffers
-            );
+      if (this.booksToCheckout.length > 0) {
+        const isbns = this.booksToCheckout.flatMap((cartItem) => {
+          return Array(cartItem.quantity).fill(cartItem.book.isbn);
         });
+
+        this.priceBeforeCommercialOffer = getTotalPriceBeforeReductions(
+          this.booksToCheckout
+        );
+
+        this.priceAfterBestCommercialOffer = this.priceBeforeCommercialOffer;
+
+        this.apiService
+          .getCommercialOffers(isbns)
+          .subscribe((commercialOffers) => {
+            this.priceAfterBestCommercialOffer =
+              calculateBestPriceFromCommercialOffers(
+                this.priceBeforeCommercialOffer,
+                commercialOffers
+              );
+            this.requestCompleted = true;
+          });
+      } else {
+        this.requestCompleted = true;
+      }
     }
   }
 

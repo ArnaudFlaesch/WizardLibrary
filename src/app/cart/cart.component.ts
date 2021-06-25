@@ -27,6 +27,7 @@ export class CartComponent implements OnChanges {
     this.booksGroupedByIsbn = getBooksGroupedByQuantity(
       changes['booksInCart'].currentValue
     );
+    localStorage.setItem('cartItems', JSON.stringify(this.booksGroupedByIsbn));
   }
 
   public getTotal(): number {
@@ -34,7 +35,6 @@ export class CartComponent implements OnChanges {
   }
 
   public navigateToCheckout(): void {
-    localStorage.setItem('cartItems', JSON.stringify(this.booksGroupedByIsbn));
     this.router.navigate(['/checkout']);
   }
 

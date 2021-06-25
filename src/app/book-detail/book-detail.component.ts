@@ -10,6 +10,9 @@ export class BookDetailComponent {
   @Input()
   public book: Book | undefined;
 
+  @Input()
+  public displaySynopsisBlock = true;
+
   public displayFullSynopsis = false;
 
   public toggleDisplayFullSynopsis(): void {

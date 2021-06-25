@@ -1,32 +1,34 @@
 <div class="book">
   <img class="bookCover" src="{{ book?.cover }}" alt="{{ book?.title }}" />
-  <h3>{{ book?.title }}</h3>
+  <h3 class="bookTitle">{{ book?.title }}</h3>
   <div>
     {{ book?.price }}
     <img class="currencyIcon {" src="assets/gringotts_coin.png" alt="monnaie" />
   </div>
-  <ng-template [ngIf]="displayFullSynopsis" [ngIfElse]="shortSynopsis">
-    <div class="fullSynopsis">
-      <div *ngFor="let sentence of book?.synopsis">
-        <p>{{ sentence }}</p>
+  <div *ngIf="displaySynopsisBlock">
+    <ng-template [ngIf]="displayFullSynopsis" [ngIfElse]="shortSynopsis">
+      <div class="fullSynopsis">
+        <div *ngFor="let sentence of book?.synopsis">
+          <p>{{ sentence }}</p>
+        </div>
       </div>
-    </div>
 
-    <span (click)="toggleDisplayFullSynopsis()" class="toggleSynopsis">
-      Afficher moins</span
-    >
-  </ng-template>
-  <ng-template #shortSynopsis>
-    <div *ngIf="book && book.synopsis.length > 0">
-      <p>
-        {{ book.synopsis[0] }}
-        <span
-          (click)="toggleDisplayFullSynopsis()"
-          class="displayFullSynopsisButton toggleSynopsis"
-        >
-          Afficher la suite</span
-        >
-      </p>
-    </div>
-  </ng-template>
+      <span (click)="toggleDisplayFullSynopsis()" class="toggleSynopsis">
+        Afficher moins</span
+      >
+    </ng-template>
+    <ng-template #shortSynopsis>
+      <div *ngIf="book && book.synopsis.length > 0">
+        <p>
+          {{ book.synopsis[0] }}
+          <span
+            (click)="toggleDisplayFullSynopsis()"
+            class="displayFullSynopsisButton toggleSynopsis"
+          >
+            Afficher la suite</span
+          >
+        </p>
+      </div>
+    </ng-template>
+  </div>
 </div>
