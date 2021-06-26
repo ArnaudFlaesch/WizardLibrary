@@ -1,0 +1,42 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.alignRight {
+  float: right;
+}
+
+.flexRow {
+  display: flex;
+  flex-direction: row;
+}
+
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.spaceBetween {
+  justify-content: space-between;
+}
+
+.m10 {
+  margin: 10px;
+}
+
+.ml20 {
+  margin-left: 20px;
+}
+
+.mt10 {
+  margin-top: 10px;
+}
+
+.currencyIcon {
+  height: 25px;
+  width: 25px;
+  margin-left: 5px;
+}

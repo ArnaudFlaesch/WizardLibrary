@@ -1,0 +1,39 @@
+<h2>Commandes passées</h2>
+
+<ng-template [ngIf]="validatedOrders.length > 0" [ngIfElse]="noPastOrders">
+  <div class="pastOrder" *ngFor="let order of validatedOrders">
+    <h4>Date : {{ formatOrderDate(order.orderDate) }}</h4>
+
+    <div class="mt10" *ngFor="let cartItem of order.items">
+      <div class="flexRow">
+        <app-book-detail
+          [book]="cartItem.book"
+          [displaySynopsisBlock]="false"
+        ></app-book-detail>
+        <div class="flexRow">
+          <label for="bookQuantity">Quantité :</label>
+          <span id="bookQuantity">{{ cartItem.quantity }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="mt10">
+      <p>
+        <span>Prix total :</span>
+        <span
+          >{{ order.finalPrice }}
+          <img
+            class="currencyIcon"
+            src="assets/gringotts_coin.png"
+            alt="monnaie"
+          />
+        </span>
+      </p>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #noPastOrders>
+  <div class="mt10">
+    <p>Vous n'avez passé aucune commande.</p>
+  </div>
+</ng-template>

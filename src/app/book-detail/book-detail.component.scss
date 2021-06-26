@@ -1,0 +1,17 @@
+.book {
+  .bookCover {
+    height: 150px;
+    width: 150px;
+  }
+
+  .fullSynopsis {
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+
+  .toggleSynopsis {
+    cursor: pointer;
+    color: blue;
+    text-decoration: blue underline;
+  }
+}

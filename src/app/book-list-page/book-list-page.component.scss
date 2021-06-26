@@ -1,0 +1,12 @@
+.flexRow {
+  flex-wrap: wrap;
+
+  .bookDetail {
+    flex-basis: 30%;
+    margin: 15px;
+  }
+}
+
+#toggleCartButton {
+  margin-right: 10px;
+}

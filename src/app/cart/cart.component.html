@@ -1,0 +1,35 @@
+<div class="m10">
+  <ng-template
+    [ngIf]="booksGroupedByIsbn.length > 0"
+    [ngIfElse]="noBooksInCart"
+  >
+    <div
+      *ngFor="let cartItem of booksGroupedByIsbn; let cartItemIndex = index"
+      class="flexRow cartItem"
+    >
+      <app-cart-item-detail
+        [cartItem]="cartItem"
+        (removeItemFromCart)="removeFromCart(cartItem.book.isbn)"
+      ></app-cart-item-detail>
+    </div>
+    <div class="flexRow mt10">
+      <p id="totalPrice">Total : {{ getTotal() }}</p>
+      <img class="currencyIcon" src="assets/gringotts_coin.png" alt="monnaie" />
+    </div>
+    <div>
+      <button
+        id="validateCartButton"
+        class="btn btn-warning"
+        (click)="navigateToCheckout()"
+      >
+        Valider le panier
+      </button>
+    </div>
+  </ng-template>
+
+  <ng-template #noBooksInCart>
+    <div class="mt10">
+      <p>Votre panier est vide.</p>
+    </div>
+  </ng-template>
+</div>
