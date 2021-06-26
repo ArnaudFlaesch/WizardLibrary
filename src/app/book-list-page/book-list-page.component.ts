@@ -1,16 +1,16 @@
-import { CartItem } from './../model/CartItem';
+import { CartItem } from '../model/CartItem';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { Book } from './../model/Book';
+import { Book } from '../model/Book';
 import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-book-list',
-  templateUrl: './book-list.component.html',
-  styleUrls: ['./book-list.component.scss']
+  templateUrl: './book-list-page.component.html',
+  styleUrls: ['./book-list-page.component.scss']
 })
-export class BookListComponent implements OnInit {
+export class BookListPageComponent implements OnInit {
   public bookListFromServer: Book[] = [];
   public filteredBookList: Book[] = [];
 

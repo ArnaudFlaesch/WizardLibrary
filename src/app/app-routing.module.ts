@@ -1,5 +1,5 @@
 import { ManageOrdersPageComponent } from './manage-orders-page/manage-orders-page.component';
-import { BookListComponent } from './book-list/book-list.component';
+import { BookListComponent } from './book-list-page/book-list-page.component';
 import { CheckoutpageComponent } from './checkout-page/checkout-page.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';

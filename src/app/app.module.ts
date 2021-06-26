@@ -7,7 +7,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
-import { BookListComponent } from './book-list/book-list.component';
+import { BookListPageComponent } from './book-list-page/book-list-page.component';
 import { ApiService } from './services/api.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CartComponent } from './cart/cart.component';
@@ -19,7 +19,7 @@ import { CartItemDetailComponent } from './cart-item-detail/cart-item-detail.com
 @NgModule({
   declarations: [
     AppComponent,
-    BookListComponent,
+    BookListPageComponent,
     BookDetailComponent,
     NavbarComponent,
     CartComponent,
