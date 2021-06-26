@@ -1,10 +1,10 @@
+import { CartItem } from './../model/CartItem';
 import {
   CommercialOffer,
   CommercialOfferType,
   SliceOffer
 } from '../model/CommercialOffer';
 import { Book } from '../model/Book';
-import { CartItem } from '../model/CartItem';
 
 export function getBooksGroupedByQuantity(books: Book[]): CartItem[] {
   const cartItems: CartItem[] = [];
@@ -17,7 +17,7 @@ export function getBooksGroupedByQuantity(books: Book[]): CartItem[] {
       return cartItem.book.isbn === bookFromCart.isbn;
     });
     if (!isItemAlreadyPresent) {
-      cartItems.push({ quantity: quantity, book: bookFromCart });
+      cartItems.push(new CartItem(quantity, bookFromCart));
     }
   });
   return cartItems;
