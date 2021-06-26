@@ -1,7 +1,10 @@
+import { Expose, Type } from 'class-transformer';
 import { CartItem } from './CartItem';
 
 export class Order {
   private _orderDate: Date;
+  @Expose()
+  @Type(() => CartItem)
   private _items: CartItem[];
   private _finalPrice: number;
 
