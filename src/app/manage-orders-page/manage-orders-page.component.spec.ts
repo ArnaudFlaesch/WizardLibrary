@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ManageOrdersComponent } from './manage-orders.component';
+import { ManageOrdersComponent } from './manage-orders-page.component';
 
 describe('ManageOrdersComponent', () => {
   let component: ManageOrdersComponent;
@@ -8,9 +8,8 @@ describe('ManageOrdersComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ManageOrdersComponent ]
-    })
-    .compileComponents();
+      declarations: [ManageOrdersComponent]
+    }).compileComponents();
   });
 
   beforeEach(() => {

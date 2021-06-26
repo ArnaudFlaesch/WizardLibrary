@@ -1,4 +1,4 @@
-import { CartItem } from './../model/CartItem';
+import { CartItem } from '../model/CartItem';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../services/api.service';
@@ -6,10 +6,11 @@ import {
   calculateBestPriceFromCommercialOffers,
   getTotalPriceBeforeReductions
 } from '../utils/book-utils';
+import { Order } from '../model/Order';
 
 @Component({
-  selector: 'app-checkoutpage',
-  templateUrl: './checkoutpage.component.html'
+  selector: 'app-checkout-page',
+  templateUrl: './checkout-page.component.html'
 })
 export class CheckoutpageComponent implements OnInit {
   public booksToCheckout: CartItem[] = [];
@@ -54,10 +55,13 @@ export class CheckoutpageComponent implements OnInit {
     if (validatedOrdersFromStorage) {
       validatedOrders = JSON.parse(validatedOrdersFromStorage);
     }
-    validatedOrders.push({
-      orderDate: new Date(),
-      items: this.booksToCheckout
-    });
+    validatedOrders.push(
+      new Order(
+        new Date(),
+        this.booksToCheckout,
+        this.priceAfterBestCommercialOffer
+      )
+    );
     localStorage.setItem('validatedOrders', JSON.stringify(validatedOrders));
     localStorage.setItem('cartItems', '');
     this.router.navigate(['/manageOrders']);

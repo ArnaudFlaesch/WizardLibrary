@@ -3,8 +3,10 @@
     [book]="cartItem.book"
     [displaySynopsisBlock]="false"
   ></app-book-detail>
-  <div class="cartItemQuantity">Quantité : {{ cartItem.quantity }}</div>
-  <button (click)="removeFromCart(cartItem.book.isbn)" class="btn btn-danger">
-    <span class="material-icons removeFromCartButton"> delete </span>
-  </button>
+  <div class="flexRow spaceBetween">
+    <div class="cartItemQuantity">Quantité : {{ cartItem.quantity }}</div>
+    <button (click)="removeFromCart(cartItem.book.isbn)" class="btn btn-danger">
+      <span class="material-icons removeFromCartButton"> delete </span>
+    </button>
+  </div>
 </div>

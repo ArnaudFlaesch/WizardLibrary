@@ -11,9 +11,9 @@ import { BookListComponent } from './book-list/book-list.component';
 import { ApiService } from './services/api.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CartComponent } from './cart/cart.component';
-import { CheckoutpageComponent } from './checkoutpage/checkoutpage.component';
+import { CheckoutpageComponent } from './checkout-page/checkout-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ManageOrdersComponent } from './manage-orders/manage-orders.component';
+import { ManageOrdersPageComponent } from './manage-orders-page/manage-orders-page.component';
 import { CartItemDetailComponent } from './cart-item-detail/cart-item-detail.component';
 
 @NgModule({
@@ -24,7 +24,7 @@ import { CartItemDetailComponent } from './cart-item-detail/cart-item-detail.com
     NavbarComponent,
     CartComponent,
     CheckoutpageComponent,
-    ManageOrdersComponent,
+    ManageOrdersPageComponent,
     CartItemDetailComponent
   ],
   imports: [
