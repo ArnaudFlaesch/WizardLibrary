@@ -15,6 +15,10 @@ export class BookDetailComponent {
 
   public displayFullSynopsis = false;
 
+  /**
+   * Permet d'afficher soit le premier élément du tableau contenant le synopsis d'un livre,
+   * soit la totalité.
+   */
   public toggleDisplayFullSynopsis(): void {
     this.displayFullSynopsis = !this.displayFullSynopsis;
   }
