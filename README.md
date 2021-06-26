@@ -23,6 +23,6 @@
 
 ## Exécuter les tests E2E (Cypress)
 
-<code>npm run cy:run</code>
+<code>npm run e2e</code>
 
 L'application doit être démarrée pour que ces tests s'exécutent.

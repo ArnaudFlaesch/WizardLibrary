@@ -7,6 +7,7 @@ import {
   getTotalPriceBeforeReductions
 } from '../utils/book-utils';
 import { Order } from '../model/Order';
+import { plainToClass } from 'class-transformer';
 
 @Component({
   selector: 'app-checkout-page',
@@ -23,7 +24,7 @@ export class CheckoutpageComponent implements OnInit {
   public ngOnInit(): void {
     const cartItems = localStorage.getItem('cartItems');
     if (cartItems) {
-      this.booksToCheckout = JSON.parse(cartItems);
+      this.booksToCheckout = plainToClass(CartItem, JSON.parse(cartItems));
       if (this.booksToCheckout.length > 0) {
         const isbns = this.booksToCheckout.flatMap((cartItem) => {
           return Array(cartItem.quantity).fill(cartItem.book.isbn);
