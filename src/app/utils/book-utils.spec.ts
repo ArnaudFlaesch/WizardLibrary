@@ -33,14 +33,8 @@ describe('Book utils tests', () => {
   ];
 
   const expectedCartItems: CartItem[] = [
-    {
-      quantity: 2,
-      book: books[0]
-    },
-    {
-      quantity: 1,
-      book: books[2]
-    }
+    new CartItem(2, books[0]),
+    new CartItem(1, books[2])
   ];
 
   it('Devrait grouper les livres', () => {
