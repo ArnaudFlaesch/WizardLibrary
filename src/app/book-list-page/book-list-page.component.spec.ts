@@ -45,15 +45,16 @@ describe('BookListPageComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(BookListPageComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it("Devrait afficher deux livres et filtrer la liste des livres pour n'en afficher qu'un seul", fakeAsync(() => {
     expect(component.booksInCart).toEqual([]);
     expect(component.bookListFromServer).toEqual([]);
+    fixture.detectChanges();
+    // Mock de la liste des livres, la requête retournera les deux livres déclarés plus haut.
     const request = httpTestingController.expectOne(apiService.API_BASE_URL);
     expect(request.request.method).toEqual('GET');
     request.flush(expectedBooks);
+  });
+
+  it("Devrait afficher deux livres et filtrer la liste des livres pour n'en afficher qu'un seul", fakeAsync(() => {
     expect(component.bookListFromServer).toEqual(expectedBooks);
     expect(component.filteredBookList).toEqual(expectedBooks);
     component.searchControl.setValue('secrets');
@@ -62,4 +63,10 @@ describe('BookListPageComponent', () => {
     fixture.detectChanges();
     expect(component.filteredBookList).toEqual([expectedBooks[1]]);
   }));
+
+  it('Devrait ajouter un livre au panier', () => {
+    component.addToCart(component.bookListFromServer[0]);
+    fixture.detectChanges();
+    expect(component.booksInCart.length).toEqual(1);
+  });
 });
