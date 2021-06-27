@@ -8,29 +8,23 @@ import {
 } from './book-utils';
 
 describe('Book utils tests', () => {
-  const books: Book[] = [
+  const books = [
     {
       isbn: 'c8fabf68-8374-48fe-a7ea-a00ccd07afff',
       title: "Henri Potier à l'école des sorciers",
-      price: 35,
-      cover: '',
-      synopsis: ['']
+      price: 35
     },
     {
       isbn: 'c8fabf68-8374-48fe-a7ea-a00ccd07afff',
       title: "Henri Potier à l'école des sorciers",
-      price: 35,
-      cover: '',
-      synopsis: ['']
+      price: 35
     },
     {
       isbn: 'a460afed-e5e7-4e39-a39d-c885c05db861',
       title: 'Henri Potier et la Chambre des secrets',
-      price: 30,
-      cover: '',
-      synopsis: ['']
+      price: 30
     }
-  ];
+  ] as Book[];
 
   const expectedCartItems: CartItem[] = [
     new CartItem(2, books[0]),
