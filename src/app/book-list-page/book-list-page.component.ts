@@ -17,7 +17,7 @@ export class BookListPageComponent implements OnInit {
   public booksInCart: Book[] = [];
   public sidenavOpened = false;
 
-  public searchControl: FormControl = new FormControl();
+  public searchControl: FormControl = new FormControl('');
   private debounce = 400;
 
   constructor(private apiService: ApiService) {}
@@ -35,7 +35,6 @@ export class BookListPageComponent implements OnInit {
       this.filteredBookList = this.bookListFromServer;
     });
 
-    this.searchControl = new FormControl('');
     this.searchControl.valueChanges
       .pipe(debounceTime(this.debounce), distinctUntilChanged())
       .subscribe((query) => {
