@@ -17,7 +17,7 @@ import { getBooksGroupedByQuantity } from '../utils/book-utils';
 })
 export class CartComponent implements OnChanges {
   @Input() booksInCart: Book[] = [];
-  @Output() removeBookFromCart = new EventEmitter<string>();
+  @Output() removeBookFromCartEvent = new EventEmitter<string>();
 
   public booksGroupedByIsbn: CartItem[] = [];
 
@@ -30,7 +30,7 @@ export class CartComponent implements OnChanges {
     localStorage.setItem('cartItems', JSON.stringify(this.booksGroupedByIsbn));
   }
 
-  public getTotal(): number {
+  public calculateTotalPriceOfCart(): number {
     return this.booksInCart.reduce((total, book) => total + book.price, 0);
   }
 
@@ -38,7 +38,7 @@ export class CartComponent implements OnChanges {
     this.router.navigate(['/checkout']);
   }
 
-  public removeFromCart(bookIsbnToRemove: string): void {
-    this.removeBookFromCart.emit(bookIsbnToRemove);
+  public removeBookFromCart(bookIsbnToRemove: string): void {
+    this.removeBookFromCartEvent.emit(bookIsbnToRemove);
   }
 }

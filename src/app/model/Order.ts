@@ -2,6 +2,8 @@ import { Expose, Type } from 'class-transformer';
 import { CartItem } from './CartItem';
 
 export class Order {
+  @Expose()
+  @Type(() => Date)
   private _orderDate: Date;
   @Expose()
   @Type(() => CartItem)

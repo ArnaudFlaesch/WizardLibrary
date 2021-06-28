@@ -1,4 +1,4 @@
-import { Order } from '../model/Order';
+import { Order } from '../../model/Order';
 import { Component, OnInit } from '@angular/core';
 import { format } from 'date-fns';
 import { plainToClass } from 'class-transformer';
@@ -22,6 +22,6 @@ export class ManageOrdersPageComponent implements OnInit {
   }
 
   public formatOrderDate(dateToFormat: Date): string {
-    return format(dateToFormat, 'HH:mm dddd MMMM YYYY');
+    return format(dateToFormat, 'HH:mm dd MMMM yyyy');
   }
 }
