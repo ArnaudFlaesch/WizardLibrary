@@ -47,6 +47,7 @@
     <div>
       <button
         id="validateOrder"
+        [disabled]="!commercialOffersRequestCompleted"
         (click)="validateOrder()"
         class="btn btn-warning"
       >

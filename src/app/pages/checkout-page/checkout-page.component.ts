@@ -1,19 +1,19 @@
-import { CartItem } from '../model/CartItem';
+import { CartItem } from '../../model/CartItem';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from '../services/api.service';
+import { ApiService } from '../../services/api.service';
 import {
   calculateBestPriceFromCommercialOffers,
   getTotalPriceBeforeReductions
-} from '../utils/book-utils';
-import { Order } from '../model/Order';
+} from '../../utils/book-utils';
+import { Order } from '../../model/Order';
 import { plainToClass } from 'class-transformer';
 
 @Component({
   selector: 'app-checkout-page',
   templateUrl: './checkout-page.component.html'
 })
-export class CheckoutpageComponent implements OnInit {
+export class CheckoutPageComponent implements OnInit {
   public booksToCheckout: CartItem[] = [];
   public priceBeforeCommercialOffer = 0;
   public priceAfterBestCommercialOffer = 0;
@@ -26,26 +26,7 @@ export class CheckoutpageComponent implements OnInit {
     if (cartItems) {
       this.booksToCheckout = plainToClass(CartItem, JSON.parse(cartItems));
       if (this.booksToCheckout.length > 0) {
-        const isbns = this.booksToCheckout.flatMap((cartItem) => {
-          return Array(cartItem.quantity).fill(cartItem.book.isbn);
-        });
-
-        this.priceBeforeCommercialOffer = getTotalPriceBeforeReductions(
-          this.booksToCheckout
-        );
-
-        this.priceAfterBestCommercialOffer = this.priceBeforeCommercialOffer;
-
-        this.apiService
-          .getCommercialOffers(isbns)
-          .subscribe((commercialOffers) => {
-            this.priceAfterBestCommercialOffer =
-              calculateBestPriceFromCommercialOffers(
-                this.priceBeforeCommercialOffer,
-                commercialOffers
-              );
-            this.commercialOffersRequestCompleted = true;
-          });
+        this.calculatePrice();
       }
     }
   }
@@ -64,7 +45,7 @@ export class CheckoutpageComponent implements OnInit {
       )
     );
     localStorage.setItem('validatedOrders', JSON.stringify(validatedOrders));
-    localStorage.setItem('cartItems', '');
+    localStorage.removeItem('cartItems');
     this.router.navigate(['/manageOrders']);
   }
 
@@ -73,5 +54,28 @@ export class CheckoutpageComponent implements OnInit {
       (cartItem, index) => index !== itemIndex
     );
     localStorage.setItem('cartItems', JSON.stringify(this.booksToCheckout));
+    if (this.booksToCheckout.length > 0) {
+      this.calculatePrice();
+    }
+  }
+
+  public calculatePrice(): void {
+    const isbns = this.booksToCheckout.flatMap((cartItem) => {
+      return Array(cartItem.quantity).fill(cartItem.book.isbn);
+    });
+    this.priceBeforeCommercialOffer = getTotalPriceBeforeReductions(
+      this.booksToCheckout
+    );
+
+    this.priceAfterBestCommercialOffer = this.priceBeforeCommercialOffer;
+
+    this.apiService.getCommercialOffers(isbns).subscribe((commercialOffers) => {
+      this.priceAfterBestCommercialOffer =
+        calculateBestPriceFromCommercialOffers(
+          this.priceBeforeCommercialOffer,
+          commercialOffers
+        );
+      this.commercialOffersRequestCompleted = true;
+    });
   }
 }

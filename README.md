@@ -10,7 +10,10 @@
 
 ## Fonctionnement de l'application
 
-
+La première page accessible par l'utilisateur est la page dans laquelle est affichée la liste des livres disponibles à l'achat. Il est possible d'ajouter
+les livres dans un panier et celui-ci sera présenté sur la droite de l'écran dans un menu latéral. Il est possible d'ajouter plusieurs fois le même livre au panier.
+Le menu latéral affichera le prix total des livres en fonction des livres choisi et de leur quantité, il permettra aussi de naviguer jusqu'à la page de confirmation de la commande où sera calculé le meilleur prix possible en fonction des offres commerciales retournées via la requête prenant en paramètre les identifiants des livres.
+Une fois que la commande est validée, elle est enregistrée dans le localStorage de l'utilisateur.
 
 
 ## Lancer l'application

@@ -31,10 +31,6 @@ describe('BookDetailComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
   it("Devrait alterner entre l'affichage du résumé et l'affichage complet du synopsis", () => {
     component.book = bookToTest;
     fixture.detectChanges();

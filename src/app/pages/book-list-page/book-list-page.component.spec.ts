@@ -8,8 +8,8 @@ import {
   TestBed,
   tick
 } from '@angular/core/testing';
-import { Book } from '../model/Book';
-import { ApiService } from '../services/api.service';
+import { Book } from '../../model/Book';
+import { ApiService } from '../../services/api.service';
 import { BookListPageComponent } from './book-list-page.component';
 
 describe('BookListPageComponent', () => {

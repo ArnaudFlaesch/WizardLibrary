@@ -1,9 +1,10 @@
-import { CartItem } from '../model/CartItem';
+import { CartItem } from '../../model/CartItem';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { Book } from '../model/Book';
-import { ApiService } from '../services/api.service';
+import { Book } from '../../model/Book';
+import { ApiService } from '../../services/api.service';
+import { plainToClass } from 'class-transformer';
 
 @Component({
   selector: 'app-book-list',
@@ -25,7 +26,7 @@ export class BookListPageComponent implements OnInit {
   ngOnInit(): void {
     const booksInCart = localStorage.getItem('cartItems');
     if (booksInCart) {
-      this.booksInCart = JSON.parse(booksInCart).map(
+      this.booksInCart = plainToClass(CartItem, JSON.parse(booksInCart)).map(
         (cartItem: CartItem) => cartItem.book
       );
     }

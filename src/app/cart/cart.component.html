@@ -9,11 +9,11 @@
     >
       <app-cart-item-detail
         [cartItem]="cartItem"
-        (removeItemFromCart)="removeFromCart(cartItem.book.isbn)"
+        (removeItemFromCart)="removeBookFromCart(cartItem.book.isbn)"
       ></app-cart-item-detail>
     </div>
     <div class="flexRow mt10">
-      <p id="totalPrice">Total : {{ getTotal() }}</p>
+      <p id="totalPrice">Total : {{ calculateTotalPriceOfCart() }}</p>
       <img class="currencyIcon" src="assets/gringotts_coin.png" alt="monnaie" />
     </div>
     <div>

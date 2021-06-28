@@ -7,13 +7,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
-import { BookListPageComponent } from './book-list-page/book-list-page.component';
+import { BookListPageComponent } from './pages/book-list-page/book-list-page.component';
 import { ApiService } from './services/api.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CartComponent } from './cart/cart.component';
-import { CheckoutpageComponent } from './checkout-page/checkout-page.component';
+import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ManageOrdersPageComponent } from './manage-orders-page/manage-orders-page.component';
+import { ManageOrdersPageComponent } from './pages/manage-orders-page/manage-orders-page.component';
 import { CartItemDetailComponent } from './cart-item-detail/cart-item-detail.component';
 
 @NgModule({
@@ -23,7 +23,7 @@ import { CartItemDetailComponent } from './cart-item-detail/cart-item-detail.com
     BookDetailComponent,
     NavbarComponent,
     CartComponent,
-    CheckoutpageComponent,
+    CheckoutPageComponent,
     ManageOrdersPageComponent,
     CartItemDetailComponent
   ],

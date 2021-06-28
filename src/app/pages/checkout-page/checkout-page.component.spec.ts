@@ -1,13 +1,13 @@
-import { CartItem } from './../model/CartItem';
-import { ApiService } from '../services/api.service';
+import { CartItem } from '../../model/CartItem';
+import { ApiService } from '../../services/api.service';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { CheckoutpageComponent } from './checkout-page.component';
+import { CheckoutPageComponent } from './checkout-page.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-describe('CheckoutpageComponent', () => {
-  let component: CheckoutpageComponent;
-  let fixture: ComponentFixture<CheckoutpageComponent>;
+describe('CheckoutPageComponent', () => {
+  let component: CheckoutPageComponent;
+  let fixture: ComponentFixture<CheckoutPageComponent>;
 
   const cartItems = [
     {
@@ -30,14 +30,14 @@ describe('CheckoutpageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CheckoutpageComponent],
+      declarations: [CheckoutPageComponent],
       providers: [ApiService],
       imports: [HttpClientTestingModule, RouterTestingModule.withRoutes([])]
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CheckoutpageComponent);
+    fixture = TestBed.createComponent(CheckoutPageComponent);
     component = fixture.componentInstance;
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
     fixture.detectChanges();

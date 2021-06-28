@@ -36,7 +36,7 @@
 
   <mat-sidenav #sidenav mode="side" position="end" [(opened)]="sidenavOpened">
     <app-cart
-      (removeBookFromCart)="removeBooksFromCart($event)"
+      (removeBookFromCartEvent)="removeBooksFromCart($event)"
       [booksInCart]="booksInCart"
     ></app-cart>
   </mat-sidenav>
