@@ -42,7 +42,7 @@
     "@angular/cli": "12.0.5",
     "@angular/compiler-cli": "12.1.1",
     "@briebug/cypress-schematic": "5.0.0",
-    "@cypress/code-coverage": "3.9.7",
+    "@cypress/code-coverage": "3.9.8",
     "@cypress/webpack-preprocessor": "5.9.1",
     "@istanbuljs/nyc-config-typescript": "1.0.1",
     "@skyux-sdk/istanbul-instrumenter-loader": "4.0.0",
