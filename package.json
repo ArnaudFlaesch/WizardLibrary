@@ -33,7 +33,7 @@
     "date-fns": "2.22.1",
     "material-design-icons": "3.0.1",
     "reflect-metadata": "0.1.13",
-    "rxjs": "7.2.0",
+    "rxjs": "6.5.3",
     "tslib": "2.3.0",
     "zone.js": "0.11.4"
   },
@@ -72,6 +72,6 @@
     "stylelint-config-standard": "22.0.0",
     "ts-loader": "9.2.3",
     "ts-node": "10.1.0",
-    "typescript": "4.3.5"
+    "typescript": "4.2.3"
   }
 }
