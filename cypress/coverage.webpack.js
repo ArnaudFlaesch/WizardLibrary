@@ -2,6 +2,7 @@ module.exports = {
   module: {
     rules: [
       {
+		enforce: 'post',
         test: /\.(js|ts)$/,
         loader: '@skyux-sdk/istanbul-instrumenter-loader',
         options: { esModules: true },
