@@ -54,7 +54,7 @@
     "cypress-localstorage-commands": "1.4.5",
     "cypress-wait-until": "1.7.1",
     "cypress-webpack-preprocessor-v5": "*",
-    "eslint": "7.30.0",
+    "eslint": "7.31.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-cypress": "2.11.3",
     "gh-pages": "3.2.3",
