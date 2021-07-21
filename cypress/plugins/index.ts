@@ -12,7 +12,6 @@
 // This function is called when a project is opened or re-opened (e.g. due to
 // the project's config changing)
 
-import registerCodeCoverageTasks = require('@cypress/code-coverage/task');
 import cypressTypeScriptPreprocessor = require('./cy-ts-preprocessor');
 
 /**
@@ -56,5 +55,5 @@ module.exports = (on, config) => {
     return launchOptions;
   });
 
-  return registerCodeCoverageTasks(on, config);
+  return config;
 };

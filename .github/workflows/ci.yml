@@ -26,6 +26,7 @@ jobs:
       - name: Install dependencies
         run: |
           npm ci
+          npm i -g npm-run-all
 
       - name: Lint
         run: |
@@ -41,7 +42,7 @@ jobs:
         run: |
           npm run test:coverage -- --no-watch --no-progress --browsers=ChromeHeadlessCI
           rm -vrf .nyc_output
-          npm run e2e:ci
+          npm run run-p -r start cy:run
           rm -vrf .nyc_output
 
       - name: Generate coverage
