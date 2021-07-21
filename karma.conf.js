@@ -26,9 +26,9 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './karma-coverage'),
+      dir: require('path').join(__dirname, './coverage'),
       subdir: '.',
-      reporters: [{ type: 'json' }, { type: 'lcov' }]
+      reporters: [{ type: 'json' }, { type: 'lcov' }, { type: 'clover' }]
     },
     reporters: ['progress', 'kjhtml'],
     port: 9876,

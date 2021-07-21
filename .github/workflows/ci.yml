@@ -26,6 +26,7 @@ jobs:
       - name: Install dependencies
         run: |
           npm ci
+          npm i -g npm-run-all
 
       - name: Lint
         run: |
@@ -40,17 +41,7 @@ jobs:
       - name: Test
         run: |
           npm run test:coverage -- --no-watch --no-progress --browsers=ChromeHeadlessCI
-          rm -vrf .nyc_output
-          npm run e2e:ci
-          rm -vrf .nyc_output
-
-      - name: Generate coverage
-        run: |
-          mkdir coverage-reports || true && mkdir .nyc_output || true
-          cp cypress-coverage/coverage-final.json coverage-reports/from-cypress.json
-          cp karma-coverage/coverage-final.json coverage-reports/from-karma.json
-          npx nyc merge coverage-reports && mv coverage.json .nyc_output/out.json
-          npx nyc report  --reporter=clover --report-dir coverage
+          run-p -r start cy:run
 
       - name: Send coverage report
         run: |
