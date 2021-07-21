@@ -43,10 +43,6 @@ jobs:
           npm run test:coverage -- --no-watch --no-progress --browsers=ChromeHeadlessCI
           run-p -r start cy:run
 
-      - name: Generate coverage
-        run: |
-          npx nyc report  --reporter=clover --report-dir coverage
-
       - name: Send coverage report
         run: |
           bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r coverage/clover.xml --project-token ${{ secrets.CODACY_PROJECT_TOKEN }}
