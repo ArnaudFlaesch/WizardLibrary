@@ -9,19 +9,12 @@
 // https://on.cypress.io/plugins-guide
 // ***********************************************************
 
-// This function is called when a project is opened or re-opened (e.g. due to
-// the project's config changing)
-
-import cypressTypeScriptPreprocessor = require('./cy-ts-preprocessor');
-
 /**
  * @type {Cypress.PluginConfig}
  */
 module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
-
-  on('file:preprocessor', cypressTypeScriptPreprocessor);
 
   // let's increase the browser window size when running headlessly
   // this will produce higher resolution images and videos
