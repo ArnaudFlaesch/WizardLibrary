@@ -42,7 +42,7 @@ jobs:
         run: |
           npm run test:coverage -- --no-watch --no-progress --browsers=ChromeHeadlessCI
           rm -vrf .nyc_output
-          npm run run-p -r start cy:run
+          run-p -r start cy:run
           rm -vrf .nyc_output
 
       - name: Generate coverage
