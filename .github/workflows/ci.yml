@@ -45,7 +45,7 @@ jobs:
 
       - name: Generate coverage
         run: |
-          npx nyc report --reporter=clover
+          npx nyc report  --reporter=clover --report-dir coverage
 
       - name: Send coverage report
         run: |
