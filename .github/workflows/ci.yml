@@ -37,7 +37,7 @@ jobs:
 
       - name: Test
         run: |
-          npm run test:coverage -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+          npm run test
           run-p -r start cy:run
 
       - name: Send coverage report
