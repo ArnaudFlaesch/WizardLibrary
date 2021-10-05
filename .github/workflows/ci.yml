@@ -47,6 +47,7 @@ jobs:
       - uses: cypress-io/github-action@v2
         with:
           browser: chrome
+          install: false
 
       - name: Send coverage report
         run: |
