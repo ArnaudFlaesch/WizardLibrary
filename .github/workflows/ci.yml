@@ -44,6 +44,11 @@ jobs:
           yarn run test
           yarn run test:e2e
 
+      - uses: actions/checkout@v2
+      - uses: cypress-io/github-action@v2
+        with:
+          browser: chrome
+
       - name: Send coverage report
         run: |
           bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r coverage/clover.xml --project-token ${{ secrets.CODACY_PROJECT_TOKEN }}
