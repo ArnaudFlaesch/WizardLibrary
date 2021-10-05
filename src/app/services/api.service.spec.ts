@@ -1,31 +1,20 @@
 import { CommercialOffersResponse } from './../model/CommercialOffersResponse';
 import { Book } from './../model/Book';
 import { ApiService } from './api.service';
-import {
-  HttpClientTestingModule,
-  HttpTestingController
-} from '@angular/common/http/testing';
-
-import { TestBed } from '@angular/core/testing';
 import { CommercialOffer } from '../model/CommercialOffer';
+import {
+  createHttpFactory,
+  HttpMethod,
+  SpectatorHttp
+} from '@ngneat/spectator';
 
 describe('ApiService tests', () => {
-  let httpTestingController: HttpTestingController;
-  let apiService: ApiService;
-
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [ApiService]
-    });
-
-    httpTestingController = TestBed.inject(HttpTestingController);
-    apiService = TestBed.inject(ApiService);
+  let spectator: SpectatorHttp<ApiService>;
+  const createSpectator = createHttpFactory({
+    service: ApiService
   });
 
-  afterEach(() => {
-    httpTestingController.verify();
-  });
+  beforeEach(() => (spectator = createSpectator()));
 
   describe('Tests sur la liste des livres', () => {
     const expectedBooks: Book[] = [
@@ -42,23 +31,26 @@ describe('ApiService tests', () => {
     ] as Book[];
 
     it('Devrait retourner deux livres', () => {
-      apiService
+      spectator.service
         .getListOfBooks()
-        .subscribe((books) => expect(books).toEqual(expectedBooks), fail);
+        .subscribe((books) => expect(books).toEqual(expectedBooks));
 
-      const request = httpTestingController.expectOne(apiService.API_BASE_URL);
-      expect(request.request.method).toEqual('GET');
-
+      const request = spectator.expectOne(
+        spectator.service.API_BASE_URL,
+        HttpMethod.GET
+      );
       request.flush(expectedBooks);
     });
 
     it('Devrait retourner une liste de livres vide', () => {
-      apiService
+      spectator.service
         .getListOfBooks()
-        .subscribe((books) => expect(books.length).toEqual(0), fail);
-
-      const req = httpTestingController.expectOne(apiService.API_BASE_URL);
-      req.flush([]);
+        .subscribe((books) => expect(books.length).toEqual(0));
+      const request = spectator.expectOne(
+        spectator.service.API_BASE_URL,
+        HttpMethod.GET
+      );
+      request.flush([]);
     });
   });
 
@@ -81,18 +73,18 @@ describe('ApiService tests', () => {
 
     it('Devrait retourner trois offres', () => {
       const isbns = ['585858', '454545'];
-      apiService
+
+      spectator.service
         .getCommercialOffers(isbns)
-        .subscribe(
-          (commercialOffers) =>
-            expect(commercialOffers).toEqual(expectedCommercialOffers),
-          fail
+        .subscribe((commercialOffers) =>
+          expect(commercialOffers).toEqual(expectedCommercialOffers)
         );
 
-      const request = httpTestingController.expectOne(
-        apiService.API_BASE_URL +
+      const request = spectator.expectOne(
+        spectator.service.API_BASE_URL +
           isbns.join(',') +
-          apiService.API_COMMERCIAL_OFFERS_ENDPOINT
+          spectator.service.API_COMMERCIAL_OFFERS_ENDPOINT,
+        HttpMethod.GET
       );
 
       expect(request.request.method).toEqual('GET');
