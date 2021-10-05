@@ -49,3 +49,5 @@ Thumbs.db
 karma-coverage/
 cypress-coverage/
 coverage-reports/
+
+coverage-jest/
