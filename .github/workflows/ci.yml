@@ -48,6 +48,7 @@ jobs:
         with:
           browser: chrome
           install: false
+          start: npm start
 
       - name: Send coverage report
         run: |
