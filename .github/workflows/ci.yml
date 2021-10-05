@@ -39,10 +39,9 @@ jobs:
         run: |
           yarn run build -- --base-href=https://arnaudflaesch.github.io/WizardLibrary/
 
-      - name: Test
+      - name: Test components
         run: |
           yarn run test
-          yarn run test:e2e
 
       - uses: actions/checkout@v2
       - uses: cypress-io/github-action@v2
