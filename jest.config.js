@@ -7,6 +7,5 @@ module.exports = {
   setupFilesAfterEnv: ['./setup-jest.ts'],
   testPathIgnorePatterns: ['<rootDir>/cypress/'],
   collectCoverage: true,
-  coverageReporters: ['html', 'lcov'],
   coverageDirectory: 'coverage-jest/'
 };
