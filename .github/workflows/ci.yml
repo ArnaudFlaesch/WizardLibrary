@@ -22,23 +22,22 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm ci
-          npm i -g npm-run-all
+          yarn install --frozen-lockfile
 
       - name: Lint
         run: |
-          npm run lint:styles
-          npm run lint:styles:report
-          npm run eslint
+          yarn run lint:styles
+          yarn run lint:styles:report
+          yarn run eslint
 
       - name: Build
         run: |
-          npm run build -- --base-href=https://arnaudflaesch.github.io/WizardLibrary/
+          yarn run build -- --base-href=https://arnaudflaesch.github.io/WizardLibrary/
 
       - name: Test
         run: |
-          npm run test
-          run-p -r start cy:run
+          yarn run test
+          yarn run test:e2e
 
       - name: Send coverage report
         run: |
