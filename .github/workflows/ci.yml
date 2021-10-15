@@ -43,7 +43,7 @@ jobs:
         run: |
           yarn run test
 
-      - name: Test components
+      - name: Test E2E
         run: |
           yarn run test:e2e
 
