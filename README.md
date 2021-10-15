@@ -20,7 +20,7 @@ Une fois que la commande est validée, elle est enregistrée dans le localStorag
 
 <code>npm run start</code>
 
-## Exécuter les tests unitaires (Karma)
+## Exécuter les tests unitaires (Jest)
 
 <code>npm run test</code>
 
