@@ -1,10 +1,14 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { createComponentFactory, Spectator } from '@ngneat/spectator';
 import { Book } from '../model/Book';
 import { BookDetailComponent } from './book-detail.component';
 
 describe('BookDetailComponent', () => {
-  let component: BookDetailComponent;
-  let fixture: ComponentFixture<BookDetailComponent>;
+  let spectator: Spectator<BookDetailComponent>;
+  const createComponent = createComponentFactory({
+    component: BookDetailComponent
+  });
+
+  beforeEach(() => (spectator = createComponent()));
 
   const bookToTest = {
     isbn: 'c8fabf68-8374-48fe-a7ea-a00ccd07afff',
@@ -19,28 +23,12 @@ describe('BookDetailComponent', () => {
     ]
   } as Book;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [BookDetailComponent]
-    }).compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(BookDetailComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
   it("Devrait alterner entre l'affichage du résumé et l'affichage complet du synopsis", () => {
-    component.book = bookToTest;
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('p').textContent).toContain(
-      bookToTest.synopsis[0]
-    );
-    expect(component.displayFullSynopsis).toEqual(false);
-    component.toggleDisplayFullSynopsis();
-    fixture.detectChanges();
-    expect(component.displayFullSynopsis).toEqual(true);
+    spectator.component.book = bookToTest;
+    spectator.fixture.detectChanges();
+    expect(spectator.query('p')?.textContent).toContain(bookToTest.synopsis[0]);
+    expect(spectator.component.displayFullSynopsis).toEqual(false);
+    spectator.component.toggleDisplayFullSynopsis();
+    expect(spectator.component.displayFullSynopsis).toEqual(true);
   });
 });

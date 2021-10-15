@@ -43,16 +43,16 @@ jobs:
         run: |
           yarn run test
 
-      - uses: cypress-io/github-action@v2
-        with:
-          browser: chrome
-          install: false
-          start: npm start
+      - name: Test E2E
+        run: |
+          yarn run test:e2e
 
       - name: Send coverage report
         run: |
+          curl -Os https://uploader.codecov.io/latest/linux/codecov 
+          chmod +x codecov
+          ./codecov -t ${{ secrets.CODECOV_TOKEN }}
           bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r coverage-jest/clover.xml --project-token ${{ secrets.CODACY_PROJECT_TOKEN }}
-          bash <(curl -s https://codecov.io/bash)
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
