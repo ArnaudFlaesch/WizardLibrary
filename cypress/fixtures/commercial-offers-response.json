@@ -1,17 +1,17 @@
 {
-    "offers": [
-        {
-            "type": "percentage",
-            "value": 5
-        },
-        {
-            "type": "minus",
-            "value": 15
-        },
-        {
-            "type": "slice",
-            "sliceValue": 100,
-            "value": 12
-        }
-    ]
+  "offers": [
+    {
+      "type": "percentage",
+      "value": 5
+    },
+    {
+      "type": "minus",
+      "value": 15
+    },
+    {
+      "type": "slice",
+      "sliceValue": 100,
+      "value": 12
+    }
+  ]
 }
