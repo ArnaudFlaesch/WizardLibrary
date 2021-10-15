@@ -20,6 +20,8 @@ module.exports = (on, config) => {
   // this will produce higher resolution images and videos
   // https://on.cypress.io/browser-launch-api
 
+  require('@cypress/code-coverage/task')(on, config);
+
   on('before:browser:launch', (browser: Cypress.Browser, launchOptions) => {
     // the browser width and height we want to get
     // our screenshots and videos will be of that resolution
