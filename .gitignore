@@ -53,3 +53,5 @@ coverage-reports/
 coverage-jest/
 
 .dccache
+
+documentation/

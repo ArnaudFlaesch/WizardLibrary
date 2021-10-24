@@ -20,7 +20,8 @@
     "eslint:fix": "yarn run eslint -- --fix",
     "lint:styles": "stylelint \"src/**/*.{css,scss,sass}\" ",
     "lint:styles:report": "yarn run lint:styles -- --formatter json --output-file ./styleLintReport.json",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\""
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "compodoc": "npx compodoc -p tsconfig.doc.json"
   },
   "dependencies": {
     "@angular/animations": "12.2.11",
@@ -46,6 +47,7 @@
     "@angular-devkit/build-angular": "12.2.11",
     "@angular/cli": "12.2.11",
     "@angular/compiler-cli": "12.2.11",
+    "@compodoc/compodoc": "1.1.15",
     "@cypress/schematic": "1.5.1",
     "@ngneat/spectator": "8.1.0",
     "@types/jest": "27.0.2",
