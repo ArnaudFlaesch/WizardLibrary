@@ -1754,10 +1754,10 @@
     merge-source-map "^1.1.0"
     schema-utils "^2.7.0"
 
-"@ngneat/spectator@8.3.2":
-  version "8.3.2"
-  resolved "https://registry.yarnpkg.com/@ngneat/spectator/-/spectator-8.3.2.tgz#51c584addd2d06b733af1654d04567f491be0218"
-  integrity sha512-jzodobAYIZmI+J7KG7PZ2tFe3wAs2RwA+hOL01l6XiiSj7JpkAyu3ORuM+l+Jn/fh20ApLu5mPSfvgwibSvKDA==
+"@ngneat/spectator@9.0.0":
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/@ngneat/spectator/-/spectator-9.0.0.tgz#acbff810cf42b32048279cc26203b74ac1debeb7"
+  integrity sha512-OqKN81aYDD3PVjtX6r2YRDjqy7YfBH7L9OzfsrYxjxVLsVUR3P4F6LDP0jfMwmhhYbyPppOQp+pt2dMPccnevg==
   dependencies:
     "@testing-library/dom" "7.26.5"
     jquery "3.6.0"
