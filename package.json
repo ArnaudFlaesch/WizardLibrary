@@ -47,7 +47,7 @@
     "@angular-devkit/build-angular": "12.2.14",
     "@angular/cli": "12.2.14",
     "@angular/compiler-cli": "12.2.15",
-    "@compodoc/compodoc": "1.1.16",
+    "@compodoc/compodoc": "1.1.18",
     "@cypress/schematic": "1.6.0",
     "@ngneat/spectator": "10.0.0",
     "@types/jest": "27.4.0",
