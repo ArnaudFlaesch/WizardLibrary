@@ -54,7 +54,7 @@
     "@types/node": "16.11.21",
     "@typescript-eslint/eslint-plugin": "5.10.0",
     "@typescript-eslint/parser": "5.10.0",
-    "cypress": "9.2.1",
+    "cypress": "9.3.1",
     "cypress-localstorage-commands": "1.6.1",
     "cypress-wait-until": "1.7.2",
     "eslint": "8.7.0",
