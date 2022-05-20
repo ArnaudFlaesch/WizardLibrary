@@ -44,8 +44,8 @@
     "zone.js": "0.11.5"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "13.3.5",
-    "@angular/cli": "13.3.5",
+    "@angular-devkit/build-angular": "13.3.6",
+    "@angular/cli": "13.3.6",
     "@angular/compiler-cli": "13.3.8",
     "@compodoc/compodoc": "1.1.19",
     "@cypress/schematic": "1.7.0",
@@ -63,7 +63,7 @@
     "gh-pages": "4.0.0",
     "jasmine-core": "4.1.1",
     "jest": "28.1.0",
-    "jest-preset-angular": "11.1.2",
+    "jest-preset-angular": "12.0.1",
     "prettier": "2.6.2",
     "stylelint": "14.8.2",
     "stylelint-config-prettier-scss": "0.0.1",
