@@ -63,7 +63,7 @@
     "gh-pages": "4.0.0",
     "jasmine-core": "4.1.1",
     "jest": "28.1.0",
-    "jest-preset-angular": "12.0.0",
+    "jest-preset-angular": "12.0.1",
     "prettier": "2.6.2",
     "stylelint": "14.8.2",
     "stylelint-config-prettier-scss": "0.0.1",
