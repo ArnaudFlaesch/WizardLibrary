@@ -5,5 +5,7 @@ dist
 build
 coverage
 
+cypress.config.ts
+
 package-lock.json
 yarn.lock
