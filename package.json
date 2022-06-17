@@ -49,7 +49,7 @@
     "@angular/compiler-cli": "14.0.2",
     "@compodoc/compodoc": "1.1.19",
     "@cypress/schematic": "2.0.0",
-    "@ngneat/spectator": "11.0.0",
+    "@ngneat/spectator": "11.0.1",
     "@types/jest": "28.1.1",
     "@types/node": "16.11.41",
     "@typescript-eslint/eslint-plugin": "5.28.0",
